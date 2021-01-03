@@ -12,8 +12,8 @@ function App() {
     <div className="App">
       <HashRouter>
         <Switch>
-          <Route exact path="/" render={props => <UsersPage/>}/>
-          <Route exact path="/services" render={props => <ServicesPage/>}/>
+          <Route exact path="/" render={props => <UsersPage />} />
+          <Route exact path="/services" render={props => <ServicesPage />} />
         </Switch>
       </HashRouter>
     </div>
