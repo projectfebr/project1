@@ -1,15 +1,19 @@
-import { CNavbarBrand, CCollapse, CDropdown, CNavbar, CNavLink, CNavbarNav, CDropdownToggle, CDropdownMenu, CDropdownItem } from '@coreui/react';
-import React from 'react';
-import '/Users/aleksandr/Frontend/project1/src/App.scss';
-
-
-
-
-
+import { CNavbarBrand, CCollapse, CDropdown, CInput, CModal, CModalHeader, CModalBody, CModalFooter, CNavbar, CNavLink, CNavbarNav, CDropdownToggle, CDropdownMenu, CCardHeader, CButton, CDropdownItem, CNavItem, CCard, CCardFooter } from '@coreui/react';
+import React, { useState } from 'react';
+import './NavBar.css';
 
 
 export function NavBar() {
 
+
+    const [modal, setModal] = useState(false);
+
+    const [balance, setBalance] = useState(2343434);
+    const [modal, setModal] = useState(false);
+
+    const toggle = () => {
+        setModal(!modal);
+    }
 
     return (
         <div>
@@ -20,10 +24,13 @@ export function NavBar() {
                 </CNavbarBrand>
                 <CCollapse show={true} navbar>
                     <CNavbarNav>
-                        <CNavLink>Home</CNavLink>
-                        <CNavLink>Link</CNavLink>
+                        <CNavItem><CButton color='success' onClick={toggle}>Пополнить баланс</CButton></CNavItem>
+                        <CNavItem className='balanceLableClass'>Баланс: {balance}</CNavItem>
+                        <CNavItem><CButton color='success'>Добавить сервис или лицензию</CButton></CNavItem>
+
+                        {/* <CNavLink>Link</CNavLink> */}
                     </CNavbarNav>
-                    <CNavbarNav className="ml-auto">
+                    {/* <CNavbarNav className="ml-auto">
                         <CDropdown inNav>
                             <CDropdownToggle color="primary">
                                 User
@@ -33,9 +40,36 @@ export function NavBar() {
                                 <CDropdownItem>Settings</CDropdownItem>
                             </CDropdownMenu>
                         </CDropdown>
-                    </CNavbarNav>
+                    </CNavbarNav> */}
                 </CCollapse>
             </CNavbar>
+
+            <>
+
+                <CModal
+                    show={modal}
+                    onClose={toggle}
+                >
+                    <CModalHeader closeButton>Пополнить баланс</CModalHeader>
+                    <CModalBody>
+                        <CInput
+                            type="number"
+                            placeholder="Введите количество"
+                            onChange={e => console.log(e.target.value)}
+                        >
+
+                        </CInput>
+                    </CModalBody>
+                    <CModalFooter>
+                        <CButton color="primary">Пополнить</CButton>{' '}
+                        <CButton
+                            color="secondary"
+                            onClick={toggle}
+                        >Отмена</CButton>
+                    </CModalFooter>
+                </CModal>
+            </>
+
         </div>
     )
 
