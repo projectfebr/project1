@@ -10,26 +10,14 @@ function App() {
 
   const [users, setUsers] = useState(
     [
-      { id: 0, name: 'Afdf', type: 'License', price: '123' },
-      { id: 1, name: 'Fdfdr', type: 'Service', price: '43' },
-      { id: 2, name: 'Qdfdf', type: 'License', price: '76' },
-      { id: 3, name: 'Dsfl', type: 'Service', price: '345' },
-      { id: 4, name: 'Elfdv', type: 'Service', price: '27' },
-      { id: 5, name: 'Sdld', type: 'License', price: '74' },
-      { id: 6, name: 'Sdldf', type: 'License', price: '234' },
+      { id: 0, name: 'AutoDesk', type: 'License', price: '15' },
+      { id: 1, name: 'Cloud', type: 'Service', price: '100' },
+      { id: 2, name: 'Adobe', type: 'License', price: '200' },
+      { id: 3, name: 'Store', type: 'Service', price: '25' },
+      { id: 4, name: 'Processing', type: 'Service', price: '50' },
+      { id: 5, name: 'IBM', type: 'License', price: '23' },
     ]
   )
-
-  const [services, setServices] = useState([
-    { id: 0, name: "Cloud" },
-    { id: 1, name: "Processing" },
-    { id: 2, name: "Store" },
-  ])
-  const [licenses, setLicenses] = useState([
-    { id: 0, name: "Autodesk" },
-    { id: 1, name: "Adobe" },
-    { id: 2, name: "IBM" },
-  ])
 
   const [balance, setBalance] = useState(0);
   // const BalanceContext = React.createContext();
@@ -46,10 +34,9 @@ function App() {
           {/* upd: Можно еще прокидывать через контекст */}
           <Route exact path="/" render={props => <UsersPage
             users={users}
-            services={services}
-            license={licenses}
             balance={balance}
-            onAddBalance={input => { setBalance(balance + input); console.log(`new balance: ${balance}`) }}
+            onAddBalance={input => { setBalance(balance + input) }}
+            onAddService={newService => { setUsers([...users, newService]) }}
           />} />
           {/* админка не реализована */}
           <Route exact path="/services" render={props => <ServicesPage />} />

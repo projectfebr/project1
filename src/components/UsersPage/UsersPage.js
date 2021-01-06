@@ -1,5 +1,5 @@
 import { CCardBody, CCard, CCardText, CCardFooter } from '@coreui/react';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { NavBar } from '../NavBar/NavBar';
 import { UsersTable } from './UsersTable';
 import './UsersPage.css'
@@ -10,11 +10,9 @@ export function UsersPage(props) {
     return (
         <Fragment>
             <NavBar
-                services={props.services}
-                licenses={props.licenses}
                 balance={props.balance}
                 onAddBalance={input => props.onAddBalance(input)}
-                onAddService={service => console.log(service)}
+                onAddService={newService => props.onAddService(newService)}
             />
             <CCard>
                 <CCardBody>

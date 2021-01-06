@@ -5,14 +5,13 @@ import './NavBar.css';
 
 export function NavBar(props) {
 
-    const test = { id: 7, name: 'jghjhg', type: 'License', price: '234' };
-
+    const [newService, setnewService] = useState({ id: 12, name: '', type: '', price: 0 })
     const [input, setInput] = useState('');
     const [modalBalanceWindow, setModalBalanceWindow] = useState(false);
-    const [modalAddService, setmodalAddServi] = useState(false)
+    const [modalAddService, setmodalAddService] = useState(false)
 
     const toggleModalAddService = () => {
-        setmodalAddServi(!modalAddService);
+        setmodalAddService(!modalAddService);
     }
 
     const toggleBalanceWindow = () => {
@@ -29,7 +28,7 @@ export function NavBar(props) {
                     <CNavbarNav>
                         <CNavItem><CButton color='success' onClick={toggleBalanceWindow}>Пополнить баланс</CButton></CNavItem>
                         <CNavItem className='balanceLableClass'>Баланс: {props.balance}</CNavItem>
-                        <CNavItem><CButton show={false} color='success' onClick={() => props.onAddService(test)}>Добавить сервис или лицензию</CButton></CNavItem>
+                        <CNavItem><CButton show={false} color='success' onClick={toggleModalAddService}>Добавить сервис или лицензию</CButton></CNavItem>
                     </CNavbarNav>
                 </CCollapse>
             </CNavbar>
@@ -54,7 +53,6 @@ export function NavBar(props) {
                             color="primary"
                             onClick={() => { props.onAddBalance(input); setInput(0); toggleBalanceWindow(); }}
                         >Пополнить</CButton>
-                        {/* {' '} */}
                         <CButton
                             color="secondary"
                             onClick={() => { toggleBalanceWindow(); setInput(0) }}
@@ -71,19 +69,32 @@ export function NavBar(props) {
                     <CModalHeader closeButton>Добавить сервис или лицензию</CModalHeader>
                     <CModalBody>
                         <CInput
-                            type="number"
-                            placeholder="Введите количество"
+                            type="text"
+                            placeholder="Наименование"
                             // onChange={e => { buffer = +e.target.value }}
-                            onInput={e => { setInput(+e.target.value) }}
+                            onInput={e => { setnewService({ ...newService, name: e.target.value }) }}
+                        >
+                        </CInput>
+                        <CInput
+                            type="text"
+                            placeholder="Тип"
+                            // onChange={e => { buffer = +e.target.value }}
+                            onInput={e => { setnewService({ ...newService, type: e.target.value }) }}
+                        >
+                        </CInput>
+                        <CInput
+                            type="number"
+                            placeholder="Стоимость"
+                            // onChange={e => { buffer = +e.target.value }}
+                            onInput={e => { setnewService({ ...newService, price: e.target.value }) }}
                         >
                         </CInput>
                     </CModalBody>
                     <CModalFooter>
                         <CButton
                             color="primary"
-                        // onClick={() => { updateBalance(input); setInput(0) }}
+                            onClick={() => { props.onAddService(newService); toggleModalAddService(); }}
                         >Добавить</CButton>
-                        {/* {' '} */}
                         <CButton
                             color="secondary"
                             onClick={toggleModalAddService}
