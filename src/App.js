@@ -10,12 +10,12 @@ function App() {
 
   const [users, setUsers] = useState(
     [
-      { id: 0, name: 'AutoDesk', type: 'License', price: '15' },
-      { id: 1, name: 'Cloud', type: 'Service', price: '100' },
-      { id: 2, name: 'Adobe', type: 'License', price: '200' },
-      { id: 3, name: 'Store', type: 'Service', price: '25' },
-      { id: 4, name: 'Processing', type: 'Service', price: '50' },
-      { id: 5, name: 'IBM', type: 'License', price: '23' },
+      { name: 'AutoDesk', type: 'License', price: '15' },
+      { name: 'Cloud', type: 'Service', price: '100' },
+      { name: 'Adobe', type: 'License', price: '200' },
+      { name: 'Store', type: 'Service', price: '25' },
+      { name: 'Processing', type: 'Service', price: '50' },
+      { name: 'IBM', type: 'License', price: '23' },
     ]
   )
 

@@ -5,15 +5,17 @@ import './NavBar.css';
 
 export function NavBar(props) {
 
-    const [newService, setnewService] = useState({ id: 12, name: '', type: '', price: 0 })
+    const [newService, setnewService] = useState({ name: '', type: '', price: 0 })
     const [input, setInput] = useState('');
+
+
     const [modalBalanceWindow, setModalBalanceWindow] = useState(false);
     const [modalAddService, setmodalAddService] = useState(false)
-
+    // отображение модального окна пополнения счета
     const toggleModalAddService = () => {
         setmodalAddService(!modalAddService);
     }
-
+    // отоброжение модального окна добавления сервиса
     const toggleBalanceWindow = () => {
         setModalBalanceWindow(!modalBalanceWindow);
     }
@@ -33,6 +35,7 @@ export function NavBar(props) {
                 </CCollapse>
             </CNavbar>
 
+            {/* модальное окно пополнения баланса */}
             <>
                 <CModal
                     show={modalBalanceWindow}
@@ -61,6 +64,7 @@ export function NavBar(props) {
                 </CModal>
             </>
 
+            {/* модальное окно добавления сервиса */}
             <>
                 <CModal
                     show={modalAddService}
